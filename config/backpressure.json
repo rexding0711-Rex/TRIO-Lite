@@ -1,0 +1,9 @@
+{
+  "_layer": "infra",
+  "description": "背压控制——防止信息过载",
+  "thresholds": {
+    "suggestor_unread_max": 5,
+    "pending_reverse_engineering_max": 3
+  },
+  "action": "超过阈值时拒绝新输入，提示先消化已有内容"
+}

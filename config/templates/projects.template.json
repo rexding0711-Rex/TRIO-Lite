@@ -1,0 +1,21 @@
+{
+  "version": "1.0.0",
+  "description": "项目注册表——TRIO 跟踪你的所有项目状态",
+  "projects": {
+    "_example": {
+      "name": "示例项目（删除此行，换成你的项目）",
+      "status": "active",
+      "last_analysis": "",
+      "verdict": "",
+      "milestones": [
+        {"date": "", "event": "项目启动", "status": "done"}
+      ]
+    }
+  },
+  "status_options": ["active", "completed", "paused", "archived"],
+  "sync_rules": {
+    "on_project_analysis": "项目分析后自动更新 last_analysis 和 verdict",
+    "on_daily_evolution": "日进化从此文件读取项目状态"
+  },
+  "_how_to_use": "复制为 config/projects.json。projects 下每个 key 是一个项目 ID。TRIO 场景（尽调/逆向工程）完成后自动更新对应项目。"
+}

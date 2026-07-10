@@ -1,0 +1,80 @@
+# TRIO 基础版 — 系统索引
+
+> 用途: AI 启动时读此文件快速理解 TRIO 全貌
+> 更新: 2026-06
+
+## 系统概览
+
+TRIO 是一个三视角协作工作流引擎——三种思维模式（Doer 工程 / Auditor 审计 / Suggestor 发散）在同一会话内接力协作，按场景 SOP 执行尽调、逆向工程、竞品分析等任务。
+
+## 命令
+
+### 面具切换
+[/doer](commands/doer.md) — 工程交付面具
+[/auditor](commands/auditor.md) — 审计质控面具
+[/suggestor](commands/suggestor.md) — 发散洞察面具
+
+### 场景命令
+[/尽调](commands/尽调.md) — 全流程尽调
+[/逆向工程](commands/逆向工程.md) — 公司系统性拆解
+[/竞品](commands/竞品.md) — 竞品对比分析
+[/复盘](commands/复盘.md) — 项目审计复盘
+[/速判](commands/速判.md) — 快速判断
+[/内容](commands/内容.md) — 内容创作交付
+[/归档](commands/归档.md) — 项目归档
+
+### 进化引擎
+[/日进化](commands/日进化.md) — 每日知识刷新+交互扫描
+[/能力镜像](commands/能力镜像.md) — 能力发现与盲点识别
+[/架构演进](commands/架构演进.md) — 架构更新建议
+
+### 引擎管理
+[/TRIO](commands/TRIO.md) — 状态概览
+[/trio-status](commands/trio-status.md) — 运行状态
+[/trio-roles](commands/trio-roles.md) — 角色列表
+[/trio-run](commands/trio-run.md) — 自由决策模式
+
+## 角色
+
+### Suggestor 侧
+[产业情报工程师](roles/产业情报工程师.md) — 行业全景+竞品初筛
+[内容生产工程师](roles/内容生产工程师.md) — 文档/报告生成
+[认知镜像工程师](roles/认知镜像工程师.md) — 用户能力发现
+
+### Auditor 侧
+[事实核查工程师](roles/事实核查工程师.md) — 声明验证+置信度标注
+[成本拆解工程师](roles/成本拆解工程师.md) — 成本拆解+估值合理性
+[因果分析工程师](roles/因果分析工程师.md) — 因果DAG+反事实检验
+[复盘工程师](roles/复盘工程师.md) — 系统性缺陷挖掘
+
+### Doer 侧
+[产品架构师](roles/产品架构师.md) — 综合评分+最终判定
+[任务编排工程师](roles/任务编排工程师.md) — DAG分解+并行识别
+[全栈交付工程师](roles/全栈交付工程师.md) — 多格式打包交付
+[资产盘点工程师](roles/资产盘点工程师.md) — 知识库索引维护
+
+## 场景
+
+[due_diligence](scenarios/due_diligence.json) — 尽调。触发: /尽调
+[deconstruct](scenarios/deconstruct.json) — 逆向工程。触发: /逆向工程
+[competitive_intelligence](scenarios/competitive_intelligence.json) — 竞品分析。触发: /竞品
+[audit_review](scenarios/audit_review.json) — 审计复盘。触发: /复盘
+[quick_assessment](scenarios/quick_assessment.json) — 快速判断。触发: /速判
+[content_delivery](scenarios/content_delivery.json) — 内容交付。触发: /内容
+[org_restructure](scenarios/org_restructure.json) — 组织调整。触发: /架构调整
+[archive_distribute](scenarios/archive_distribute.json) — 归档分发。触发: /归档
+[explore](scenarios/explore.json) — 探索模式。触发: /trio-run
+
+## 运行时
+
+每个 run = runs/{run_id}/ 下的一个目录，包含 state.json + step 文件 + todo.md。
+
+## 基础设施
+
+- [paths.conf](config/paths.conf.example) — 路径配置模板
+- [layers.json](config/layers.json) — 六层架构定义
+- [guard.json](config/guard.json) — 禁区定义
+- [projects.json](config/projects.json) — 项目注册表
+- [self-verify-protocol](config/self-verify-protocol.json) — 自验证闭环
+- [context-isolation-protocol](config/context-isolation-protocol.json) — 上下文隔离
+- [escalate-protocol](config/escalate-protocol.json) — 升级协议

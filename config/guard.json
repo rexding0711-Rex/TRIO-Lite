@@ -1,0 +1,65 @@
+{
+  "_layer": "infra",
+  "version": "1.1.0",
+  "description": "TRIO 基础版 禁区定义——操作系统目录内禁止出现的内容",
+  "forbidden": {
+    "extensions": [
+      ".pptx",
+      ".docx",
+      ".pdf",
+      ".xlsx",
+      ".png",
+      ".jpg",
+      ".jpeg",
+      ".gif",
+      ".mp4",
+      ".zip"
+    ],
+    "patterns": [
+      "*示例项目A*",
+      "*示例项目B*"
+    ],
+    "_comment_patterns": "在这里添加你自己的项目名/客户名/公司名，防止污染 TRIO 操作系统目录",
+    "dirs_patterns": [
+      "*项目*",
+      "*客户*",
+      "*交付*",
+      "*delivery*",
+      "*output*"
+    ],
+    "naming_rule": "TRIO文件名不得包含公司名/产品名/人名的具体实例。research/ideas/ 格式: YYYYMMDD-描述-编号.md",
+    "auto_pattern": "",
+    "naming_whitelist": {
+      "research/ideas/": {
+        "pattern": "^\\d{8}-[a-z0-9一-鿿]+(-\\d{3})?\\.md$",
+        "rule": "文件名格式: YYYYMMDD-中文描述-编号.md 或 YYYYMMDD-中文描述.md"
+      },
+      "principle": "白名单优于黑名单——不符合上述格式的文件视为违规，无需枚举所有公司名"
+    }
+  },
+  "allowed_exceptions": {
+    "knowledge/decision-log/": "TRIO自身架构决策（非项目决策）",
+    "knowledge/lessons-learned/": "跨项目通用教训",
+    "config/roles/": "角色文件可引用项目为案例",
+    ".claude/commands/": "命令文件可引用项目为案例"
+  },
+  "enforcement": {
+    "manual": "mgmt.sh guard",
+    "auto_suggestion": "每次/日进化Layer3自动跑guard"
+  },
+  "failure_handling": {
+    "guard_scan_fails": "标记为⚠️跳过本次扫描，写入errors.log，不阻塞日进化",
+    "false_positive": "用户确认文件归属→加入allowed_exceptions白名单→下次自动跳过",
+    "json_parse_error": "回退到内置最小规则集(仅检查扩展名)，告警",
+    "scan_timeout": "30秒超时→输出部分结果+警告"
+  },
+  "evolution": {
+    "versioning": "每次修改forbidden规则时递增版本号",
+    "pattern_growth_control": "patterns列表超50条→自动建议迁移到白名单naming_rule"
+  },
+  "compatibility": {
+    "rule": "新版本向后兼容旧版本。旧版本遇到新字段→忽略(不报错)。",
+    "breaking_change_policy": "破坏性变更需提前1个版本声明deprecated→再1个版本后移除",
+    "last_breaking_change": "无"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "version": "1.0.0",
+  "description": "门禁框架模板——复制为 config/gate-framework.json 后编辑",
+  "gates": [
+    {
+      "id": "source-trace",
+      "name": "数据来源检查",
+      "trigger": "analysis",
+      "severity": "block",
+      "desc": "每条声明必须有出处"
+    },
+    {
+      "id": "counter-argument",
+      "name": "反方论证检查",
+      "trigger": "analysis",
+      "severity": "block",
+      "desc": "结论必须有反面视角"
+    }
+  ],
+  "built_in_gates": [
+    {"id": "file-exists", "name": "文件路径存在", "severity": "block"},
+    {"id": "date-sanity", "name": "日期合理性", "severity": "block"}
+  ],
+  "hook_points": ["pre-delivery", "post-session"],
+  "plugin_dir": "config/gates",
+  "_how_to_use": "复制为 config/gate-framework.json。gates 数组添加你的检查项。severity: block=阻断, warn=警告, silent=只记录。在 config/gates/ 下放自定义检查脚本。运行 init.sh 会自动生成一份。"
+}

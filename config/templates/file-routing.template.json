@@ -1,0 +1,23 @@
+{
+  "version": "1.0.0",
+  "description": "文件路由规则模板——复制为 config/file-routing.json 后编辑",
+  "workspace_root": "你的工作目录路径",
+  "routes": [
+    {
+      "id": "example-project-route",
+      "source_patterns": ["项目", "交付物", "deliverable"],
+      "dest": "你的工作目录/项目",
+      "auto": false,
+      "description": "匹配文件名含「项目」或「交付物」的文件，放到项目目录。auto=false 表示每次询问。"
+    }
+  ],
+  "forbidden_in_os": {
+    "extensions": [".pptx", ".docx", ".pdf", ".xlsx", ".png", ".jpg", ".mp4", ".zip"],
+    "message": "二进制文件不允许出现在 TRIO OS 目录"
+  },
+  "uncertain_rules": {
+    "action": "ask_user",
+    "fallback_question": "这个文件该放哪？"
+  },
+  "_how_to_use": "复制此文件为 config/file-routing.json，编辑 routes 和 workspace_root。运行 init.sh 会自动生成一份。"
+}

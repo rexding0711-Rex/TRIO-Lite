@@ -1,0 +1,30 @@
+{
+  "id": "delivery-protocol",
+  "version": "1.0.0",
+  "description": "TRIO 标准交付协议。所有交付物必须同时产出 MD + PDF。PDF 通过 pandoc+weasyprint 管道生成。",
+
+  "standard_outputs": {
+    "full_mode": ["Markdown (.md)", "PDF (.pdf)", "HTML (.html)"],
+    "standard_mode": ["Markdown (.md)", "PDF (.pdf)"],
+    "quick_mode": ["Markdown (.md)"]
+  },
+
+  "pdf_pipeline": {
+    "engine": "pandoc + weasyprint",
+    "command": "pandoc {input}.md -o {output}.pdf --pdf-engine=weasyprint",
+    "fallback": "pandoc {input}.md -o {output}.pdf --pdf-engine=pdflatex",
+    "validation": "ls -lh {output}.pdf 确认文件存在且 >0 字节"
+  },
+
+  "file_naming": {
+    "pattern": "{项目名}-{文档类型}.{格式}",
+    "example": "项目名-报告类型.pdf"
+  },
+
+  "hard_rules": [
+    "full/standard 模式场景完成后，必须同时产出 MD + PDF。只出 MD = 未完成",
+    "PDF 生成失败时 → 尝试 fallback 引擎。两个引擎都失败 → ESCALATE",
+    "self-verify 审计必须检查 PDF 文件存在且大小 >0",
+    "HTML 格式为 full 模式可选增强项"
+  ]
+}

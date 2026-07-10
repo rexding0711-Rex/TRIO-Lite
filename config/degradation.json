@@ -1,0 +1,36 @@
+{
+  "_layer": "infra",
+  "version": "1.1.0",
+  "description": "TRIO 优雅降级——基于认知负载自适应输出深度",
+  "depth_levels": {
+    "1_summary": "一句话结论+下一步行动——认知过载时使用",
+    "2_standard": "标准报告——日常使用",
+    "3_deep": "完整分析——深度研究时使用"
+  },
+  "auto_degradation": {
+    "trigger": "背压检查：Suggestor未读>5 或 待逆向>3 或 今日run>2",
+    "action": "自动降为 Level 1，只出核心结论",
+    "override": "用户说'详细'或'深入'时恢复 Level 2/3"
+  },
+  "current_depth": 2,
+  "load_indicators": {
+    "kimi_unread": "knowledge-benchmark 中标记未读的数量",
+    "companies_pending": "company-benchmark 中无 analysis 文件的公司数",
+    "runs_today": "今日已完成的 run 数"
+  },
+  "failure_handling": {
+    "depth_calc_fails": "默认降为Level 2（标准输出），不阻塞主流程",
+    "override_rules": "用户说详细/深入/展开时恢复Level 3；用户说简略/重点/一句话时强制Level 1",
+    "oscillation_prevention": "连续3次深度切换→锁定当前Level 30分钟，防止频繁抖动",
+    "silent_degradation": "降级时在输出开头标注 [认知负载:高→已降级为摘要模式]"
+  },
+  "evolution": {
+    "versioning": "每次调整阈值时递增版本号",
+    "threshold_tuning": "每月根据behavior-log数据回顾负载阈值是否合理→自动建议调整"
+  },
+  "compatibility": {
+    "rule": "新版本向后兼容旧版本。旧版本遇到新字段→忽略(不报错)。",
+    "breaking_change_policy": "破坏性变更需提前1个版本声明deprecated→再1个版本后移除",
+    "last_breaking_change": "无"
+  }
+}

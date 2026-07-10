@@ -1,0 +1,19 @@
+# TRIO 基础版 路径配置
+
+# ── TRIO OS（系统文件）──
+OS_ROOT   = {你的 TRIO 安装目录}
+CONFIG    = {OS_ROOT}/config
+KNOWLEDGE = {OS_ROOT}/knowledge
+DOCS      = {OS_ROOT}/docs
+
+# ── 用户数据（你的业务产出）──
+DATA      = {你配置的 TRIO_DB}
+PROJECTS  = {DATA}/项目
+KNOWLEDGE_BASE = {DATA}/知识库
+ARCHIVE   = {DATA}/归档
+
+# ── 规则 ──
+# 1. 含真实公司/人物/项目信息 → PROJECTS
+# 2. 框架/模板/规格/配置 → OS
+# 3. 跑场景产生的 run 输出 → PROJECTS/{项目名}/runs/
+# 4. 周报/报告 → PROJECTS 或自定义

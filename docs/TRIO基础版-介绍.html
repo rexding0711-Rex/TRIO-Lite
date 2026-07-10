@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+    color: #000;
+    background: #fff;
+    line-height: 1.8;
+    font-size: 11pt;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 60px;
+  }
+
+  .cover {
+    text-align: center;
+    padding: 120px 0 80px 0;
+    page-break-after: always;
+  }
+  .cover h1 { font-size: 42pt; font-weight: 900; letter-spacing: -1px; margin-bottom: 12px; }
+  .cover .subtitle { font-size: 16pt; color: #555; margin-bottom: 40px; }
+  .cover .desc { font-size: 11pt; color: #777; line-height: 2; margin-bottom: 60px; }
+  .cover .meta { font-size: 9pt; color: #999; }
+
+  h1 { font-size: 22pt; font-weight: 900; margin: 36px 0 12px 0; padding-bottom: 4px; border-bottom: 3px solid #000; }
+  h2 { font-size: 14pt; font-weight: 700; margin: 24px 0 8px 0; }
+
+  p { margin: 4px 0 8px 0; }
+
+  table { width: 100%; border-collapse: collapse; margin: 10px 0 18px 0; font-size: 10pt; }
+  th { background: #000; color: #fff; padding: 8px 10px; text-align: left; font-weight: 700; }
+  td { padding: 7px 10px; border-bottom: 1px solid #e0e0e0; }
+  tr:nth-child(even) td { background: #fafafa; }
+
+  .note { font-size: 9pt; color: #888; margin-top: 4px; }
+  .divider { border: none; border-top: 1px solid #e0e0e0; margin: 30px 0; }
+
+  .fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 10px 0; }
+  .fit-box { padding: 16px; border: 1px solid #e0e0e0; border-radius: 4px; }
+  .fit-box h3 { font-size: 11pt; margin-bottom: 6px; }
+  .fit-box ul { padding-left: 18px; font-size: 10pt; }
+  .fit-box li { margin-bottom: 3px; }
+
+  @media print {
+    body { padding: 30px 50px; }
+    .cover { padding: 80px 0 60px 0; }
+    @page { margin: 15mm; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 封面 -->
+<div class="cover">
+  <h1>TRIO 基础版</h1>
+  <div class="subtitle">三个视角，一个答案</div>
+  <div class="desc">
+    同一问题，三种性格的 AI 从不同角度审视<br>
+    互相挑刺之后，你拿到的是经过对抗验证的答案
+  </div>
+  <div class="meta">版本 2.0 &ensp;|&ensp; 开源 MIT &ensp;|&ensp; 6,215 行代码 &ensp;|&ensp; 100% 本地运行</div>
+</div>
+
+<!-- 核心机制 -->
+<h1>核心机制：三视角协作</h1>
+<p>TRIO 不是三个 AI 模型。它是<strong>同一个 AI，换三种思考方式</strong>：</p>
+
+<table>
+  <tr><th>面具</th><th>性格</th><th>擅长</th><th>一句话</th></tr>
+  <tr><td>🎨 好奇宝宝</td><td>发散 · 洞察 · 联想</td><td>行业扫描、竞品情报、跨领域类比</td><td>「诶，这个方向有点意思……」</td></tr>
+  <tr><td>🔍 较真鬼</td><td>质疑 · 审计 · 验证</td><td>事实核查、成本拆解、逻辑漏洞挖掘</td><td>「等一下，你这句话没有证据」</td></tr>
+  <tr><td>🔧 实干家</td><td>收敛 · 决策 · 交付</td><td>架构设计、方案选择、文件打包</td><td>「好了，结论是这样，下一步做这个」</td></tr>
+</table>
+
+<p>三个视角各自独立输出 → 实干家综合 → 一份<strong>「已经被挑过刺」</strong>的结论。</p>
+<p class="note">不是换模型，是换了三种问法。</p>
+
+<!-- 15个命令 -->
+<h1>15 个命令</h1>
+
+<h2>一键分析</h2>
+<table>
+  <tr><th style="width:18%">命令</th><th style="width:38%">功能</th><th>适用场景</th></tr>
+  <tr><td><code>/速判</code></td><td>快速评估（3–5 分钟）</td><td>想看个东西靠不靠谱，不想等</td></tr>
+  <tr><td><code>/尽调</code></td><td>全流程尽调（7 步）</td><td>深度评估公司 / 项目 / 方案</td></tr>
+  <tr><td><code>/竞品</code></td><td>竞品分析</td><td>产品对比、市场定位</td></tr>
+  <tr><td><code>/内容</code></td><td>内容创作交付</td><td>写文章、报告、方案</td></tr>
+  <tr><td><code>/复盘</code></td><td>快速审计复盘</td><td>项目做完了，回头看看</td></tr>
+</table>
+
+<h2>自由模式</h2>
+<table>
+  <tr><th style="width:25%">命令</th><th>功能</th></tr>
+  <tr><td><code>/trio-run</code></td><td>自由模式 — 三视角同时输出，不限场景</td></tr>
+  <tr><td><code>/trio-resume</code></td><td>恢复之前的 run</td></tr>
+  <tr><td><code>/trio-abort</code></td><td>取消进行中的 run</td></tr>
+  <tr><td><code>/日进化</code></td><td>每日知识沉淀 — 今天学了什么</td></tr>
+  <tr><td><code>/能力镜像</code></td><td>查看当前能力成长情况</td></tr>
+</table>
+
+<!-- 5个场景 -->
+<h1>5 个场景 SOP</h1>
+<p>每个场景是一套标准化的多步骤流程，不是简单问答：</p>
+
+<table>
+  <tr><th>场景</th><th>步骤</th><th>流程</th><th>输出</th></tr>
+  <tr><td>尽调</td><td>7 步</td><td>任务编排 → 行业定位 → 事实核查 → 成本拆解 → 叙事解剖 → 综合评分 → 打包</td><td>评分卡 + PDF</td></tr>
+  <tr><td>竞品分析</td><td>5 步</td><td>扫描 → 对比 → 护城河 → 威胁 → 策略</td><td>竞品矩阵 + 雷达图</td></tr>
+  <tr><td>审计复盘</td><td>5 步</td><td>目标 → 结果对比 → 偏差 → 根因 → 改进</td><td>审计报告</td></tr>
+  <tr><td>内容交付</td><td>4 步</td><td>需求 → 大纲 → 初稿 → 审核 → 终稿</td><td>文章 / 方案 / 报告</td></tr>
+  <tr><td>快速评估</td><td>3 步</td><td>扫描 → 核查 → 判定</td><td>评级 + 一句话结论</td></tr>
+</table>
+
+<!-- 11个角色 -->
+<h1>11 个工程角色</h1>
+<table>
+  <tr><th style="width:28%">角色</th><th>职责</th></tr>
+  <tr><td>产业情报工程师</td><td>行业扫描、数据收集、竞品初筛</td></tr>
+  <tr><td>事实核查工程师</td><td>逐条验证声明、溯源、置信度标注</td></tr>
+  <tr><td>成本拆解工程师</td><td>BOM 拆解、隐性成本、估值合理性</td></tr>
+  <tr><td>因果分析工程师</td><td>因果 DAG 构建、反事实检验</td></tr>
+  <tr><td>复盘工程师</td><td>系统性逻辑缺陷挖掘、PR vs 真相</td></tr>
+  <tr><td>产品架构师</td><td>10 维综合评分、最终判定、方案选择</td></tr>
+  <tr><td>任务编排工程师</td><td>复杂目标分解为子任务 DAG</td></tr>
+  <tr><td>内容生产工程师</td><td>文章 / 报告 / 方案的撰写与打磨</td></tr>
+  <tr><td>全栈交付工程师</td><td>PDF / Word / Markdown / HTML 打包</td></tr>
+  <tr><td>认知镜像工程师</td><td>能力追踪、偏差校准</td></tr>
+  <tr><td>资产盘点工程师</td><td>知识库索引维护、技能提取</td></tr>
+</table>
+
+<!-- 技术架构 -->
+<h1>技术架构</h1>
+<p><strong>用户</strong> → 15 个命令 → <strong>场景路由</strong>（5 SOP）→ <strong>角色调度</strong>（11 角色）→ <strong>三视角输出</strong> → 基础设施（备份 / 同步 / 进化 / 门禁）</p>
+<p class="note">依赖：Claude Code（npm 全局安装）&ensp;|&ensp; 数据：100% 本地 &ensp;|&ensp; 协议：MIT</p>
+
+<hr class="divider">
+
+<!-- 适合/不适合 -->
+<h1>适合你 / 不适合你</h1>
+
+<div class="fit-grid">
+  <div class="fit-box">
+    <h3>✅ 适合你，如果你</h3>
+    <ul>
+      <li>觉得 AI 回答太快太自信，想要被验证过的答案</li>
+      <li>做分析 / 调研 / 评估类工作，需要结构化输出</li>
+      <li>想看「三个角度讨论同一件事」会不会发现盲区</li>
+      <li>对 AI 工作流感兴趣，想有一套开箱即用的框架</li>
+    </ul>
+  </div>
+  <div class="fit-box">
+    <h3>❌ 不适合你，如果你</h3>
+    <ul>
+      <li>只需要简单问答（ChatGPT 就够了）</li>
+      <li>不需要结构化分析（TRIO 有学习成本）</li>
+      <li>对命令行感到不适（TRIO 基于终端）</li>
+    </ul>
+  </div>
+</div>
+
+<p style="text-align:center; margin-top: 40px; font-size: 12pt;">
+  TRIO 不是一个更好的 ChatGPT。<br>它是你的思维搭档——<strong>三个性格不同的小伙伴，陪你一起想清楚。</strong>
+</p>
+
+</body>
+</html>

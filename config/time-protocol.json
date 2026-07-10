@@ -1,0 +1,28 @@
+{
+  "id": "time-protocol",
+  "version": "1.0.0",
+  "description": "TRIO 时间协议。系统内所有时间戳统一使用 Asia/Shanghai (UTC+8)。手写时间 = 不可靠。",
+
+  "timezone": "Asia/Shanghai",
+  "utc_offset": "+08:00",
+  "get_now": "TZ=Asia/Shanghai date '+%Y-%m-%dT%H:%M:%S+08:00'",
+
+  "hard_rules": [
+    "所有 state.json 的 created_at/updated_at/completed_at 必须使用系统当前时间，禁止手写",
+    "所有 .md 文件的日期标注使用 Asia/Shanghai 时区",
+    "日进化报告的时间戳取自系统时间，不从文件读取",
+    "milestones 的日期字段使用 YYYY-MM-DD 格式，不写相对时间（'明天'→翻译为绝对日期）",
+    "projects.json last_updated 每次更新时自动打时间戳"
+  ],
+
+  "milestone_tracking": {
+    "description": "用户在对话中提及的带时间锚点的事件必须被识别和记录。",
+    "patterns": [
+      "明天/后天/下周/月底 + 动作（见X/交X/去X）",
+      "具体日期（X月X日/YYYY-MM-DD）+ 动作",
+      "X天后/周后 + 动作"
+    ],
+    "action": "识别到 → 翻译为绝对日期 → 写入 projects.json 对应项目的 milestones 数组",
+    "daily_check": "日进化 Layer 3 读取所有项目的 milestones，未来 ≤3 天的标 🔴 提醒，≤7 天的标 🟡"
+  }
+}

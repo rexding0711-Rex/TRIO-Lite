@@ -1,0 +1,89 @@
+{
+  "id": "due_diligence",
+  "name": "尽调",
+  "version": "1.0.0",
+  "triggers": [
+    "尽调",
+    "DD",
+    "靠不靠谱",
+    "快速分析",
+    "评估",
+    "背景调查"
+  ],
+  "mode": "full",
+  "protocols": {
+    "workflow": "config/workflow.json",
+    "delivery": "config/delivery-protocol.json"
+  },
+  "steps": [
+    {
+      "order": 0,
+      "role": "任务编排工程师",
+      "mask": "doer",
+      "action": "（可选，复杂目标时启用）将尽调目标分解为子任务 DAG，识别可并行维度",
+      "output": "任务 DAG + 检查点计划",
+      "optional": true,
+      "enable_condition": "目标涉及 ≥2 个分析维度（如技术+融资+团队）且用户未指定固定步骤数时启用。简单查询直接跳过",
+      "acceptance_criteria": "DAG 包含 4-8 个子任务。非复杂目标时可跳过此步，直接进入 Step 1"
+    },
+    {
+      "order": 1,
+      "role": "产业情报工程师",
+      "mask": "suggestor",
+      "action": "行业定位+竞品初筛+TAM估算",
+      "output": "行业全景报告",
+      "acceptance_criteria": "覆盖3+竞品对比，TAM附假设条件，所有声明有溯源链接。对照 {数据目录}/知识库\\industry\\ 已有产业数据交叉验证。如目标为AI创业公司，检查 knowledge\\company-library\\INDEX.md 是否有已逆向的同类公司可供对标"
+    },
+    {
+      "order": 2,
+      "role": "事实核查工程师",
+      "mask": "auditor",
+      "action": "逐条验证报告中的技术声明+团队背景+融资信息",
+      "acceptance_criteria": "每条声明标注置信度[1-5]和source，无未标注声明。对照 {数据目录}/知识库\\company-benchmark\\ 已有公司数据"
+    },
+    {
+      "order": 3,
+      "role": "成本拆解工程师",
+      "mask": "auditor",
+      "action": "BOM拆解+隐性成本发现+估值合理性判断",
+      "depends_on": [
+        2
+      ],
+      "acceptance_criteria": "覆盖API/人力/基础设施三项，每项附计算过程。需要时 Read {数据目录}/知识库\\compliance\\ 核查法务合规项"
+    },
+    {
+      "order": 4,
+      "role": "复盘工程师",
+      "mask": "auditor",
+      "action": "系统性逻辑缺陷挖掘+PR叙事vs地面真相对照",
+      "depends_on": [
+        1,
+        2
+      ],
+      "acceptance_criteria": "至少发现3个逻辑缺陷或1个根本性叙事矛盾。对照 {数据目录}/知识库\\methods\\ 尽调方法论核查清单。如步骤3已完成则一并Read做交叉分析。默认调用因果分析维度：提取3+因果声明、逐条反事实检验、标注混淆变量。Read knowledge\\evaluation-framework\\causal-analysis-methodology.md"
+    },
+    {
+      "order": 5,
+      "role": "产品架构师",
+      "mask": "doer",
+      "action": "10维综合评分+最终判定+决策建议",
+      "depends_on": [
+        2,
+        3,
+        4
+      ],
+      "acceptance_criteria": "7维度打分齐全，四档判定（🟢🟡🟠🔴），下一步行动建议明确。三维护出：①人——创始人/核心团队评估 ②企业——商业模式+竞争定位 ③方法论——本次尽调可复用的判断框架"
+    },
+    {
+      "order": 6,
+      "role": "全栈交付工程师",
+      "mask": "doer",
+      "action": "打包尽调报告（PDF/Word/Markdown）",
+      "depends_on": [
+        5
+      ],
+      "acceptance_criteria": "PDF+MD双格式，含评分卡+核查清单+决策建议"
+    }
+  ],
+  "_layer": "scenario"
+}

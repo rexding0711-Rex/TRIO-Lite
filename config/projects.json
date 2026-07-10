@@ -1,0 +1,13 @@
+{
+  "id": "project-registry",
+  "version": "1.0.0",
+  "description": "你的项目状态——日进化从此读取。跑 /尽调 或 /逆向 后自动更新。",
+  "last_updated": "",
+  "projects": {},
+  "sync_rules": {
+    "on_project_analysis": "项目分析完成后，更新对应项目的 last_analysis 和 verdict",
+    "on_daily_evolution": "日进化从此文件读取项目状态",
+    "on_status_change": "项目 status 变化时更新此文件"
+  },
+  "_layer": "infra"
+}

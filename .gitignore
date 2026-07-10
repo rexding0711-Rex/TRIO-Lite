@@ -1,0 +1,23 @@
+# TRIO 基础版
+# 不追踪用户路径配置（用户自己创建）
+config/paths.conf
+
+# 不追踪 init.sh 生成的个人配置（每个用户自己跑出来，绝不能进公开仓库）
+config/user-config.json
+config/user-config.json.bak
+config/file-routing.json
+config/gate-framework.json
+
+# 不追踪运行时数据
+state/behavior-log.jsonl
+state/depth-*
+state/errors.log
+state/kb-refresh-status.json
+config/kb-refresh/history.log
+config/kb-refresh/last_session.txt
+runs/
+
+# Python
+__pycache__/
+*.pyc
+config/kb-refresh/topics.tsv

@@ -1,0 +1,33 @@
+{
+  "version": "2.0.0",
+  "rule": "上层依赖下层，下层不知上层。mgmt.sh是唯一跨层通道。聚焦日常办公流——文档写作、信息搜集、快速评估、竞品了解、项目复盘。",
+  "layers": [
+    {
+      "id": 1,
+      "name": "交互层",
+      "key": "interface",
+      "dir": ".claude/commands/",
+      "description": "用户入口——~15个斜杠命令，覆盖日常办公高频场景",
+      "depends_on": [2, 3]
+    },
+    {
+      "id": 2,
+      "name": "能力层",
+      "key": "capability",
+      "dir": "config/roles/ config/scenarios/ config/protocols/",
+      "description": "引擎——3个面具 × 5个场景 × 共享协议，协作产出",
+      "depends_on": [3]
+    },
+    {
+      "id": 3,
+      "name": "基础层",
+      "key": "infra",
+      "dir": "mgmt.sh scripts/ lib/ knowledge/ docs/ state.json config/",
+      "description": "基础设施——脚本、知识库、状态管理、禁区守护",
+      "depends_on": []
+    }
+  ],
+  "cross_layer_channel": "mgmt.sh",
+  "header_convention": "# @layer: {key}",
+  "_layer": "infra"
+}

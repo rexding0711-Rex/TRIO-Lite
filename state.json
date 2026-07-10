@@ -1,0 +1,18 @@
+{
+  "_version": "2.0.0",
+  "_note": "TRIO 活跃状态——日进化自动更新",
+  "_updated": "2026-07-03T17:50:00+08:00",
+
+  "milestones": {
+    "M1_稳定运行期": { "status": "pending", "metric": "≥10 个 run" },
+    "M2_知识积累期": { "status": "pending", "metric": "公司库 ≥1 且 kb-refresh ≥20" },
+    "M3_自增强闭环": { "status": "pending", "metric": "自增强建议执行 ≥3 条" },
+    "M4_方法论库成型": { "status": "pending", "metric": "提取可复用模式 ≥50" },
+    "M5_规模化运行": { "status": "pending", "metric": "≥50 run + 审计通过率 ≥95%" }
+  },
+
+  "active_training": {},
+  "capability_mirror": {},
+  "pending_actions": [],
+  "recent_runs": []
+}
