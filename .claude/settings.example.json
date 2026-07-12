@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "_说明": "将此文件复制为 .claude/settings.json 并根据需要修改。Hook 格式必须使用 matcher + hooks 数组嵌套结构。",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'TRIO 基础版 · 会话开始'"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'TRIO 基础版 · 会话结束'"
+          }
+        ]
+      }
+    ]
+  }
+}

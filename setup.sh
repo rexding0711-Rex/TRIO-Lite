@@ -83,6 +83,11 @@ check "npm" npm "Mac: 随 Node.js 安装 | Linux: sudo apt install npm"
 # ═══ Python ═══
 check_version "Python 3" python3 3.10 "Mac: brew install python@3.12 | Linux: sudo apt install python3"
 
+# ═══ 解压工具 ═══
+check "unzip" unzip "sudo apt install unzip"
+check "curl" curl "sudo apt install curl"
+check "wget" wget "sudo apt install wget"
+
 # ═══ Claude Code ═══
 if command -v claude &>/dev/null; then
     echo -e "  ${GREEN}✅${NC} Claude Code — $(claude --version 2>/dev/null || echo '已安装')"
